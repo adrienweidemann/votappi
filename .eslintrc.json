@@ -1,0 +1,78 @@
+{
+  "env": { "browser": true, "es6": true, "node": true, "jest": true },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:prettier/recommended" // Make sure this is always the last element in the array.
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": { "ecmaVersion": "latest", "sourceType": "module" },
+  "plugins": ["prettier", "@typescript-eslint"],
+  "rules": {
+    "prettier/prettier": "error",
+    "@typescript-eslint/array-type": ["error", { "default": "array" }],
+    "brace-style": "off",
+    "curly": ["error", "all"],
+    "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/member-ordering": ["error"],
+    "@typescript-eslint/no-floating-promises": ["error"],
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/typedef": ["error"],
+    "no-magic-numbers": ["off"],
+    "@typescript-eslint/no-magic-numbers": [
+      "error",
+      {
+        "ignoreNumericLiteralTypes": true,
+        "ignoreReadonlyClassProperties": true,
+        "ignoreArrayIndexes": true,
+        "ignoreEnums": true,
+        "ignore": [0, 1, -1]
+      }
+    ],
+    "@typescript-eslint/no-require-imports": ["error"],
+    "@typescript-eslint/no-unnecessary-condition": ["error"],
+    "@typescript-eslint/no-useless-constructor": ["error"],
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/prefer-for-of": ["error"],
+    "@typescript-eslint/prefer-readonly": ["error"],
+    "@typescript-eslint/promise-function-async": ["error"],
+    "quotes": "off",
+    "@typescript-eslint/quotes": [
+      "error",
+      "double",
+      {
+        "avoidEscape": false,
+        "allowTemplateLiterals": false
+      }
+    ],
+    "@typescript-eslint/restrict-plus-operands": ["error", { "checkCompoundAssignments": true }],
+    "@typescript-eslint/restrict-template-expressions": [
+      "error",
+      { "allowNumber": true, "allowBoolean": true, "allowNullable": true }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "explicit",
+            "overrides": {
+              "accessors": "explicit",
+              "constructors": "no-public",
+              "methods": "explicit",
+              "properties": "off",
+              "parameterProperties": "explicit"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "ignorePatterns": [".eslintrc.json"]
+}
